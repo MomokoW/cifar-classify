@@ -1,6 +1,9 @@
 import pickle as pickle
 import numpy as np
 import os
+import importlib
+import sys
+importlib.reload(sys)
 
 
 # from scipy.misc import imread
@@ -8,7 +11,7 @@ import os
 def load_CIFAR_batch(filename):
     """ load single batch of cifar """
     with open(filename, 'rb') as f:
-        datadict = pickle.load(f)
+        datadict = pickle.load(f, encoding='latin1')
         X = datadict['data']
         Y = datadict['labels']
         X = X.reshape(10000, 3, 32, 32).transpose(0, 2, 3, 1).astype("float")
@@ -40,7 +43,7 @@ def get_CIFAR10_data(num_training=5000, num_validation=500, num_test=500):
     """
     # Load the raw CIFAR-10 data
 
-    cifar10_dir = 'C://download//cifar-10-python//cifar-10-batches-py//'
+    cifar10_dir = 'G://deeplearning//cifar-10-batches-py//'
     X_train, y_train, X_test, y_test = load_CIFAR10(cifar10_dir)
     print(X_train.shape)
     # Subsample the data
@@ -105,7 +108,8 @@ def load_tiny_imagenet(path, dtype=np.float32):
   # Use words.txt to get names for each class
   with open(os.path.join(path, 'words.txt'), 'r') as f:
     wnid_to_words = dict(line.split('\t') for line in f)
-    for wnid, words in wnid_to_words.iteritems():
+    for wnid, words in wnid_to_words.
+    iteritems():
       wnid_to_words[wnid] = [w.strip() for w in words.split(',')]
   class_names = [wnid_to_words[wnid] for wnid in wnids]
 
